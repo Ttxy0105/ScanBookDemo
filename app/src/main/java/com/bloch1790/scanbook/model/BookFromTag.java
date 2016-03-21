@@ -11,7 +11,7 @@ public class BookFromTag {
      * start : 0
      * count : 10
      * total : 30
-     * books : ["Book"]
+     * books : ["book"]
      */
 
     private int start;

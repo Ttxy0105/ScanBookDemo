@@ -3,7 +3,6 @@ package com.bloch1790.scanbook.util;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import com.bloch1790.scanbook.model.Book;
 import com.bloch1790.scanbook.model.BookFromTag;
 import com.bloch1790.scanbook.model.BookInfo;
 import com.bloch1790.scanbook.model.TagsEntity;
@@ -18,26 +17,6 @@ import java.util.List;
 
 
 public class Utility {
-    public Book parseBookInfo(BookInfo bookInfo) {
-        Book book = new Book();
-        book.setId(bookInfo.getId());
-        book.setTitle(bookInfo.getTitle());
-        book.setBitmap(downLoadBitmap(bookInfo.getImages().getMedium()));
-        book.setAuthor(parseAuthor(bookInfo.getAuthor()));
-        book.setPublisher(bookInfo.getPublisher());
-        book.setPublishDate(bookInfo.getPubdate());
-        book.setIsbn(bookInfo.getIsbn13());
-        book.setSummary(bookInfo.getSummary());
-        book.setAuthorInfo(bookInfo.getAuthor_intro());
-        book.setPage(bookInfo.getPages());
-        book.setPrice(bookInfo.getPrice());
-        book.setContent(bookInfo.getCatalog());
-        book.setRate(bookInfo.getRating().getAverage());
-        book.setTags(parseTags(bookInfo.getTags()));
-        return book;
-    }
-
-
 
     public static BookInfo parseByGson(String jsonData) {
         Gson gson = new Gson();
@@ -79,7 +58,7 @@ public class Utility {
         return bitmap;
     }
 
-    private List<String> parseTags(List<TagsEntity> list_tag) {
+    public static List<String> parseTags(List<TagsEntity> list_tag) {
         List<String> tags = new ArrayList<>();
         for (TagsEntity tag : list_tag) {
             tags.add(tag.getName());
@@ -87,7 +66,7 @@ public class Utility {
         return tags;
     }
 
-    private String parseAuthor(List<String> list) {
+    public static String parseAuthor(List<String> list) {
         StringBuffer str = new StringBuffer();
         for (int i = 0; i < list.size(); i++) {
             try {
