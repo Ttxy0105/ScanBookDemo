@@ -1,8 +1,11 @@
 package com.bloch1790.scanbook.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.bloch1790.scanbook.R;
@@ -29,5 +32,14 @@ public class BookListActivity extends AppCompatActivity {
         adapter = new BookAdapter(this, books,booklist);
         //adapter.notifyDataSetChanged();
         booklist.setAdapter(adapter);
+        booklist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(BookListActivity.this, BookInfoActivity.class);
+                BookInfo info = books.get(position);
+                intent.putExtra(BookInfo.class.getName(), info);
+                startActivity(intent);
+            }
+        });
     }
 }
