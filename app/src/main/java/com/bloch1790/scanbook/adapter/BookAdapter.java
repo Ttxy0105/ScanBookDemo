@@ -112,4 +112,6 @@ public class BookAdapter extends BaseAdapter implements AbsListView.OnScrollList
         public TextView publisher;
     }
 
+
+
 }

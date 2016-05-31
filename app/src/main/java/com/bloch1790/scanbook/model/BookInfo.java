@@ -448,4 +448,5 @@ public class BookInfo implements Parcelable {
             return new BookInfo[size];
         }
     };
+
 }
